@@ -86,7 +86,10 @@ winget:
         enabled: true
         draft: false
         # 自動マージを有効にするか（Botが対応可能な場合）
-        base: master
+        base:
+          owner: microsoft
+          name: winget-pkgs
+          branch: master
 
     # GoReleaserがPRを作成する際のコミットユーザー
     # MicrosoftのCLA署名済みのユーザー情報にしておくのが無難です
