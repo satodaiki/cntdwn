@@ -45,15 +45,52 @@ changelog:
       - "^docs:"
       - "^test:"
 
-brews:
-  - repository:
-      owner: satodaiki # Homebrew Taps 用のリポジトリのオーナー名
-      name: homebrew-tap # Homebrew Taps 用のリポジトリ名
-      token: "{{ .Env.TAP_GITHUB_TOKEN }}" # `TAP_GITHUB_TOKEN` 環境変数をトークンとして使うようにする
-
 release:
   footer: >-
 
     ---
 
     Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
+
+# --- ここからHomebrewの設定 ---
+brews:
+  - repository:
+      owner: satodaiki # Homebrew Taps 用のリポジトリのオーナー名
+      name: homebrew-tap # Homebrew Taps 用のリポジトリ名
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}" # `TAP_GITHUB_TOKEN` 環境変数をトークンとして使うようにする
+
+# --- ここからWingetの設定 ---
+winget:
+  - name: cntdwn
+    
+    # パブリッシャー情報（重要）
+    publisher: satodaiki
+    publisher_url: "https://github.com/satodaiki"
+    publisher_support_url: "https://github.com/satodaiki/cntdwn/issues"
+    
+    # パッケージ情報
+    author: satodaiki
+    description: "A simple countdown timer CLI tool."
+    homepage: "https://github.com/satodaiki/cntdwn"
+    license: MIT
+    copyright: "© 2025 satodaiki"
+
+    # PRを送る先のリポジトリ設定（通常は変更不要）
+    repository:
+      owner: microsoft
+      name: winget-pkgs
+      branch: master
+      pull_request:
+        enabled: true
+        draft: false
+        # 自動マージを有効にするか（Botが対応可能な場合）
+        base: master
+
+    # GoReleaserがPRを作成する際のコミットユーザー
+    # MicrosoftのCLA署名済みのユーザー情報にしておくのが無難です
+    commit_author:
+      name: satodaiki
+      email: banana5388@gmail.com
+
+    # インストール後の動作確認用コマンド（オプション）
+    path_environment_variable: Path # WindowsのPATHに追加
