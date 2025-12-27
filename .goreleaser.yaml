@@ -78,7 +78,7 @@ winget:
 
     # PRを送る先のリポジトリ設定（通常は変更不要）
     repository:
-      owner: satodaiki
+      owner: microsoft
       name: winget-pkgs
       branch: master
       token: "{{ .Env.WINGET_GITHUB_TOKEN }}"
