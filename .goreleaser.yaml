@@ -70,7 +70,7 @@ winget:
     
     # パッケージ情報
     author: satodaiki
-    description: "A simple countdown timer CLI tool."
+    short_description: "A simple countdown timer CLI tool."
     homepage: "https://github.com/satodaiki/cntdwn"
     license: MIT
     copyright: "© 2025 satodaiki"
